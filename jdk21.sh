@@ -16,8 +16,8 @@ log_info() {
 }
 
 exit_if_jdk_is_installed() {
-    if type -p java > /dev/null; then
-        log_info "Java is already installed"
+    if java -version 2>&1 | grep -q "version \"21"; then
+        log_info "Java 21 is already installed"
         exit 1
     fi
 }
