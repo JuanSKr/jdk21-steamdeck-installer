@@ -21,7 +21,7 @@ wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL -O 
 tar -xvf $JDK_FILE_NAME
 
 # Move the JDK to the installation directory
-mv jdk-$JDK_VERSION $INSTALLATION_DIR
+mv jdk-21.0.2 $INSTALLATION_DIR
 
 # Configure the path variable
 echo "export JAVA_HOME=$INSTALLATION_DIR" >> ~/.bashrc
