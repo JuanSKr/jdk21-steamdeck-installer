@@ -11,23 +11,27 @@ JDK_CHECKSUM_FILE_NAME="jdk-21_linux-x64_bin.tar.gz.sha256"
 INSTALLATION_DIR="${HOME}/.local/jdk-${JDK_VERSION}"
 CURRENT_DIR=$(pwd)
 
-# Log the version being installed
-log_info "Installing version jdk-21"
+log_info() {
+    echo "[INFO] $1"
+}
 
-# Download JDK
-wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL -O $JDK_FILE_NAME
+exit_if_jdk_is_installed() {
+    if type -p java > /dev/null; then
+        log_info "Java is already installed"
+        exit 1
+    fi
+}
 
-# Unzip the downloaded file
-tar -xvf $JDK_FILE_NAME
+install_jdk() {
+    # Download JDK
+    wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" $JDK_URL -O $JDK_FILE_NAME
 
-# Move the JDK to the installation directory
-mv jdk-21.0.2 $INSTALLATION_DIR
+    # Unzip the downloaded file
+    tar -xvf $JDK_FILE_NAME
 
-# Configure the path variable
-echo "export JAVA_HOME=$INSTALLATION_DIR" >> ~/.bashrc
-echo 'export PATH=$PATH:$JAVA_HOME/bin' >> ~/.bashrc
-
-source ~/.bashrc
+    # Move the JDK to the installation directory
+    mv jdk-21.0.2 $INSTALLATION_DIR
+}
 
 # This will set JAVA_HOME and will also append the java/bin folder to PATH
 set_variables_for_the_installation() {
@@ -60,3 +64,4 @@ source ~/.bashrc
 if "${INSTALLATION_DIR}/bin/java" -version
 then
     log_info "Java is succesfully installed!"
+fi
