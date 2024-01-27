@@ -42,6 +42,7 @@ set_variables_for_the_installation() {
         echo "export PATH=\$PATH:${INSTALLATION_DIR}/bin" >>  ~/.profile
         echo "[[ -f ~/.profile ]] && source ~/.profile" >> ~/.bashrc
     fi
+    source ~/.profile
 }
 
 #### MAIN ####
