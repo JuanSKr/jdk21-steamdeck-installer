@@ -10,7 +10,13 @@ Ensure that your Steam Deck has internet access before running this script.
 
 ## Usage Instructions
 
-1. Run the script.
+1. Before running the script, ensure it has execute permissions.
+
+    ```bash
+    chmod +x jdk21.sh
+    ```
+
+    Then, run the script.
 
     ```bash
     ./jdk21.sh
