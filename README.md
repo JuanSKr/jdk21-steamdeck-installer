@@ -13,7 +13,7 @@ Ensure that your Steam Deck has internet access before running this script.
 1. Run the script.
 
     ```bash
-    ./install_jdk21.sh
+    ./jdk21.sh
     ```
 
 2. Check the installation.
